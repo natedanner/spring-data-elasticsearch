@@ -30,7 +30,7 @@ import org.springframework.data.geo.Point;
  * @since 4.1
  * @see <a href="https://geojson.org/geojson-spec.html#point">https://geojson.org/geojson-spec.html#point</a>
  */
-public class GeoJsonPoint implements GeoJson<List<Double>> {
+public final class GeoJsonPoint implements GeoJson<List<Double>> {
 
 	private final double x;
 	private final double y;
@@ -90,15 +90,18 @@ public class GeoJsonPoint implements GeoJson<List<Double>> {
 
 	@Override
 	public boolean equals(Object o) {
-		if (this == o)
+		if (this == o) {
 			return true;
-		if (o == null || getClass() != o.getClass())
+		}
+		if (o == null || getClass() != o.getClass()) {
 			return false;
+		}
 
 		GeoJsonPoint that = (GeoJsonPoint) o;
 
-		if (Double.compare(that.x, x) != 0)
+		if (Double.compare(that.x, x) != 0) {
 			return false;
+		}
 		return Double.compare(that.y, y) == 0;
 	}
 

@@ -33,7 +33,7 @@ import org.springframework.util.Assert;
  * @since 4.1
  * @see <a href="https://geojson.org/geojson-spec.html#multipoint">https://geojson.org/geojson-spec.html#multipoint</a>
  */
-public class GeoJsonLineString implements GeoJson<Iterable<Point>> {
+public final class GeoJsonLineString implements GeoJson<Iterable<Point>> {
 
 	public static final String TYPE = "LineString";
 
@@ -123,10 +123,12 @@ public class GeoJsonLineString implements GeoJson<Iterable<Point>> {
 
 	@Override
 	public boolean equals(Object o) {
-		if (this == o)
+		if (this == o) {
 			return true;
-		if (o == null || getClass() != o.getClass())
+		}
+		if (o == null || getClass() != o.getClass()) {
 			return false;
+		}
 
 		GeoJsonLineString that = (GeoJsonLineString) o;
 

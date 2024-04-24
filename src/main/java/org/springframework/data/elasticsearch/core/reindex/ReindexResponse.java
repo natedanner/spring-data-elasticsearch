@@ -28,7 +28,7 @@ import org.springframework.lang.Nullable;
  * @author Sijia Liu
  * @since 4.4
  */
-public class ReindexResponse {
+public final class ReindexResponse {
 
 	private final long took;
 	private final boolean timedOut;
@@ -184,7 +184,7 @@ public class ReindexResponse {
 		return new ReindexResponseBuilder();
 	}
 
-	public static class Failure {
+	public static final class Failure {
 
 		@Nullable private final String index;
 		@Nullable private final String type;

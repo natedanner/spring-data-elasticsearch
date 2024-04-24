@@ -25,7 +25,7 @@ import org.springframework.util.Assert;
  * @author Peter-Josef Meisch
  * @since 4.1
  */
-public class AliasActionParameters {
+public final class AliasActionParameters {
 	private final String[] indices;
 	@Nullable private final String[] aliases;
 	@Nullable private final Query filterQuery;

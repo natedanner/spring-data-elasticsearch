@@ -427,7 +427,7 @@ public class ReactiveIndicesTemplate
 
 	@Override
 	public IndexCoordinates getIndexCoordinates() {
-		return (boundClass != null) ? getIndexCoordinatesFor(boundClass) : Objects.requireNonNull(boundIndexCoordinates);
+		return boundClass != null ? getIndexCoordinatesFor(boundClass) : Objects.requireNonNull(boundIndexCoordinates);
 	}
 
 	// region helper functions

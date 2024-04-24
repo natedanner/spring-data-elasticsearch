@@ -28,7 +28,7 @@ import java.util.Collection;
  * morton encoded value which interleaves lat/lon (y/x). NOTE: this will replace
  * {@code org.elasticsearch.common.geo.GeoHashUtils}
  */
-public class Geohash {
+public final class Geohash {
 	private static final char[] BASE_32 = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'b', 'c', 'd', 'e', 'f',
 			'g', 'h', 'j', 'k', 'm', 'n', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
 
@@ -47,7 +47,8 @@ public class Geohash {
 	private static final long MAX_LAT_BITS = (0x1L << (PRECISION * 5 / 2)) - 1;
 
 	// Below code is adapted from the spatial4j library (GeohashUtils.java) Apache 2.0 Licensed
-	private static final double[] precisionToLatHeight, precisionToLonWidth;
+	private static final double[] precisionToLatHeight;
+	private static final double[] precisionToLonWidth;
 	static {
 		precisionToLatHeight = new double[PRECISION + 1];
 		precisionToLonWidth = new double[PRECISION + 1];
@@ -130,7 +131,7 @@ public class Geohash {
 	 * @param neighbors list to add the neighbors to
 	 * @return the given list
 	 */
-	public static final <E extends Collection<? super String>> E addNeighbors(String geohash, E neighbors) {
+	public static <E extends Collection<? super String>> E addNeighbors(String geohash, E neighbors) {
 		return addNeighborsAtLevel(geohash, geohash.length(), neighbors);
 	}
 
@@ -142,7 +143,7 @@ public class Geohash {
 	 * @param neighbors list to add the neighbors to
 	 * @return the given list
 	 */
-	public static final <E extends Collection<? super String>> E addNeighborsAtLevel(String geohash, int level,
+	public static <E extends Collection<? super String>> E addNeighborsAtLevel(String geohash, int level,
 			E neighbors) {
 		String south = getNeighbor(geohash, level, 0, -1);
 		String north = getNeighbor(geohash, level, 0, +1);
@@ -173,7 +174,7 @@ public class Geohash {
 	 * @param dy delta of the second grid coordinate (must be -1, 0 or +1)
 	 * @return geohash of the defined cell
 	 */
-	public static final String getNeighbor(String geohash, int level, int dx, int dy) {
+	public static String getNeighbor(String geohash, int level, int dx, int dy) {
 		int cell = BASE_32_STRING.indexOf(geohash.charAt(level - 1));
 
 		// Decoding the Geohash bit pattern to determine grid coordinates
@@ -200,8 +201,8 @@ public class Geohash {
 			}
 		} else {
 			// define grid coordinates for next level
-			final int nx = ((level % 2) == 1) ? (x + dx) : (x + dy);
-			final int ny = ((level % 2) == 1) ? (y + dy) : (y + dx);
+			final int nx = (level % 2) == 1 ? (x + dx) : (x + dy);
+			final int ny = (level % 2) == 1 ? (y + dy) : (y + dx);
 
 			// if the defined neighbor has the same parent a the current cell
 			// encode the cell directly. Otherwise find the cell next to this
@@ -213,7 +214,7 @@ public class Geohash {
 				return geohash.substring(0, level - 1) + encodeBase32(nx, ny);
 			} else {
 				String neighbor = getNeighbor(geohash, level - 1, dx, dy);
-				return (neighbor != null) ? neighbor + encodeBase32(nx, ny) : neighbor;
+				return neighbor != null ? neighbor + encodeBase32(nx, ny) : neighbor;
 			}
 		}
 	}
@@ -221,14 +222,14 @@ public class Geohash {
 	/**
 	 * Encode a string geohash to the geohash based long format (lon/lat interleaved, 4 least significant bits = level)
 	 */
-	public static final long longEncode(String hash) {
+	public static long longEncode(String hash) {
 		return longEncode(hash, hash.length());
 	}
 
 	/**
 	 * Encode lon/lat to the geohash based long format (lon/lat interleaved, 4 least significant bits = level)
 	 */
-	public static final long longEncode(final double lon, final double lat, final int level) {
+	public static long longEncode(final double lon, final double lat, final int level) {
 		// shift to appropriate level
 		final short msf = (short) (((12 - level) * 5) + (MORTON_OFFSET - 2));
 		return ((encodeLatLon(lat, lon) >>> msf) << 4) | level;
@@ -237,17 +238,17 @@ public class Geohash {
 	/**
 	 * Encode to a geohash string from full resolution longitude, latitude)
 	 */
-	public static final String stringEncode(final double lon, final double lat) {
+	public static String stringEncode(final double lon, final double lat) {
 		return stringEncode(lon, lat, 12);
 	}
 
 	/**
 	 * Encode to a level specific geohash string from full resolution longitude, latitude
 	 */
-	public static final String stringEncode(final double lon, final double lat, final int level) {
+	public static String stringEncode(final double lon, final double lat, final int level) {
 		// convert to geohashlong
 		long interleaved = encodeLatLon(lat, lon);
-		interleaved >>>= (((PRECISION - level) * 5) + (MORTON_OFFSET - 2));
+		interleaved >>>= ((PRECISION - level) * 5) + (MORTON_OFFSET - 2);
 		final long geohash = (interleaved << 4) | level;
 		return stringEncode(geohash);
 	}
@@ -255,7 +256,7 @@ public class Geohash {
 	/**
 	 * Encode to a geohash string from the geohash based long format
 	 */
-	public static final String stringEncode(long geoHashLong) {
+	public static String stringEncode(long geoHashLong) {
 		int level = (int) geoHashLong & 15;
 		geoHashLong >>>= 4;
 		char[] chars = new char[level];
@@ -281,7 +282,7 @@ public class Geohash {
 		long l = 0L;
 		for (char c : hash.toCharArray()) {
 			b = (long) (BASE_32_STRING.indexOf(c));
-			l |= (b << (level-- * 5));
+			l |= b << (level-- * 5);
 			if (level < 0) {
 				// We cannot handle more than 12 levels
 				break;
@@ -305,7 +306,7 @@ public class Geohash {
 			if (b < 0) {
 				throw new IllegalArgumentException("unsupported symbol [" + c + "] in geohash [" + hash + "]");
 			}
-			l |= (b << ((level-- * 5) + (MORTON_OFFSET - 2)));
+			l |= b << ((level-- * 5) + (MORTON_OFFSET - 2));
 			if (level < 0) {
 				// We cannot handle more than 12 levels
 				break;
@@ -350,12 +351,12 @@ public class Geohash {
 	}
 
 	/** returns the latitude value from the string based geohash */
-	public static final double decodeLatitude(final String geohash) {
+	public static double decodeLatitude(final String geohash) {
 		return decodeLatitude(Geohash.mortonEncode(geohash));
 	}
 
 	/** returns the latitude value from the string based geohash */
-	public static final double decodeLongitude(final String geohash) {
+	public static double decodeLongitude(final String geohash) {
 		return decodeLongitude(Geohash.mortonEncode(geohash));
 	}
 

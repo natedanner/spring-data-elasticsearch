@@ -32,7 +32,7 @@ import org.springframework.util.NumberUtils;
  * @author Niklas Herder
  * @author Haibo Liu
  */
-final public class QueryStringPlaceholderReplacer {
+public final class QueryStringPlaceholderReplacer {
 
 	private static final Pattern PARAMETER_PLACEHOLDER = Pattern.compile("\\?(\\d+)");
 

@@ -112,7 +112,7 @@ public class Settings extends DefaultStringObjectMap<Settings> {
 	 * flattens a Map<String, Object> to a stream of Map.Entry objects where the keys are the dot separated concatenated
 	 * keys of sub map entries
 	 */
-	static private Stream<Map.Entry<String, Object>> doFlatten(Map.Entry<String, Object> entry) {
+	private static Stream<Map.Entry<String, Object>> doFlatten(Map.Entry<String, Object> entry) {
 
 		if (entry.getValue()instanceof Map<?, ?> nested) {
 

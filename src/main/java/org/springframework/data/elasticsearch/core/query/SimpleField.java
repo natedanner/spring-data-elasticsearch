@@ -84,8 +84,12 @@ public class SimpleField implements Field {
 
 	@Override
 	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (!(o instanceof SimpleField that)) return false;
+		if (this == o) {
+			return true;
+		}
+		if (!(o instanceof SimpleField that)) {
+			return false;
+		}
         return Objects.equals(name, that.name) && Objects.equals(fieldType, that.fieldType) && Objects.equals(path, that.path);
 	}
 

@@ -662,7 +662,7 @@ public abstract class ElasticsearchPartQueryIntegrationTests {
 	 * @param clazz the entity class
 	 * @return the created query string
 	 */
-	abstract protected String buildQueryString(Query query, Class<?> clazz);
+	protected abstract String buildQueryString(Query query, Class<?> clazz);
 
 	@FunctionalInterface
 	interface AssertFunction {

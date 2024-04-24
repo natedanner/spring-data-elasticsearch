@@ -39,7 +39,7 @@ public class ElasticsearchRepositoryMetadata extends DefaultRepositoryMetadata {
 		if (SearchHit.class.isAssignableFrom(returnedDomainClass)) {
 			try {
 				// dealing with Collection<SearchHit<T>> or Flux<SearchHit<T>>, getting to T
-				ParameterizedType methodGenericReturnType = ((ParameterizedType) method.getGenericReturnType());
+				ParameterizedType methodGenericReturnType = (ParameterizedType) method.getGenericReturnType();
 				if (isAllowedGenericType(methodGenericReturnType)) {
 					ParameterizedType collectionTypeArgument = (ParameterizedType) methodGenericReturnType
 							.getActualTypeArguments()[0];

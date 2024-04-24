@@ -723,23 +723,30 @@ abstract class ElasticsearchRepositoryIntegrationTests {
 
 		@Override
 		public boolean equals(Object o) {
-			if (this == o)
+			if (this == o) {
 				return true;
-			if (o == null || getClass() != o.getClass())
+			}
+			if (o == null || getClass() != o.getClass()) {
 				return false;
+			}
 
 			SampleEntity that = (SampleEntity) o;
 
-			if (rate != that.rate)
+			if (rate != that.rate) {
 				return false;
-			if (available != that.available)
+			}
+			if (available != that.available) {
 				return false;
-			if (!Objects.equals(id, that.id))
+			}
+			if (!Objects.equals(id, that.id)) {
 				return false;
-			if (!Objects.equals(type, that.type))
+			}
+			if (!Objects.equals(type, that.type)) {
 				return false;
-			if (!Objects.equals(message, that.message))
+			}
+			if (!Objects.equals(message, that.message)) {
 				return false;
+			}
 			return Objects.equals(version, that.version);
 		}
 

@@ -98,7 +98,8 @@ public abstract class SearchTemplateIntegrationTests {
 
 	@Autowired ElasticsearchOperations operations;
 	@Autowired IndexNameProvider indexNameProvider;
-	IndexOperations personIndexOperations, studentIndexOperations;
+	IndexOperations personIndexOperations;
+	IndexOperations studentIndexOperations;
 
 	@BeforeEach
 	void setUp() {

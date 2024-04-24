@@ -250,7 +250,7 @@ class SearchDocumentResponseBuilder {
 			List<CompletionSuggestion.Entry.Option<T>> options = new ArrayList<>();
 			List<CompletionSuggestOption<EntityAsMap>> optionsES = completionSuggest.options();
 			optionsES.forEach(optionES -> {
-				SearchDocument searchDocument = (optionES.source() != null) ? DocumentAdapters.from(optionES) : null;
+				SearchDocument searchDocument = optionES.source() != null ? DocumentAdapters.from(optionES) : null;
 				T hitEntity = null;
 
 				if (searchDocument != null) {

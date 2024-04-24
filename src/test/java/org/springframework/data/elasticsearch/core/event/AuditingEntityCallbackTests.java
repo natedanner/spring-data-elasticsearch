@@ -136,19 +136,24 @@ class AuditingEntityCallbackTests {
 
 		@Override
 		public boolean equals(Object o) {
-			if (this == o)
+			if (this == o) {
 				return true;
-			if (o == null || getClass() != o.getClass())
+			}
+			if (o == null || getClass() != o.getClass()) {
 				return false;
+			}
 
 			Sample sample = (Sample) o;
 
-			if (!Objects.equals(id, sample.id))
+			if (!Objects.equals(id, sample.id)) {
 				return false;
-			if (!Objects.equals(createdDate, sample.createdDate))
+			}
+			if (!Objects.equals(createdDate, sample.createdDate)) {
 				return false;
-			if (!Objects.equals(createdBy, sample.createdBy))
+			}
+			if (!Objects.equals(createdBy, sample.createdBy)) {
 				return false;
+			}
 			return Objects.equals(modified, sample.modified);
 		}
 

@@ -36,9 +36,9 @@ public class WellKnownText {
 	public static final String COMMA = ",";
 	public static final String NAN = "NaN";
 
-	private final String NUMBER = "<NUMBER>";
-	private final String EOF = "END-OF-STREAM";
-	private final String EOL = "END-OF-LINE";
+	private static final String NUMBER = "<NUMBER>";
+	private static final String EOF = "END-OF-STREAM";
+	private static final String EOL = "END-OF-LINE";
 
 	private final boolean coerce;
 	private final GeometryValidator validator;
@@ -76,7 +76,7 @@ public class WellKnownText {
 
 				private void visitPoint(double lon, double lat, double alt) {
 					sb.append(lon).append(SPACE).append(lat);
-					if (Double.isNaN(alt) == false) {
+					if (!Double.isNaN(alt)) {
 						sb.append(SPACE).append(alt);
 					}
 				}
@@ -138,11 +138,10 @@ public class WellKnownText {
 	 */
 	private Geometry parseGeometry(StreamTokenizer stream) throws IOException, ParseException {
 		final String type = nextWord(stream).toLowerCase(Locale.ROOT);
-		switch (type) {
-			case "point":
-				return parsePoint(stream);
-			case "bbox":
-				return parseBBox(stream);
+		if ("point".equals(type)) {
+			return parsePoint(stream);
+		} else if ("bbox".equals(type)) {
+			return parseBBox(stream);
 		}
 		throw new IllegalArgumentException("Unknown geometry type: " + type);
 	}
@@ -178,7 +177,7 @@ public class WellKnownText {
 		if (isNumberNext(stream)) {
 			alts.add(nextNumber(stream));
 		}
-		if (alts.isEmpty() == false && alts.size() != lons.size()) {
+		if (!alts.isEmpty() && alts.size() != lons.size()) {
 			throw new ParseException("coordinate dimensions do not match: " + tokenString(stream), stream.lineno());
 		}
 	}

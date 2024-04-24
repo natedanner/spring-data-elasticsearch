@@ -27,7 +27,7 @@ import org.springframework.lang.Nullable;
  * @author Farid Faoudi
  * @since 4.2
  */
-public class ByQueryResponse {
+public final class ByQueryResponse {
 
 	private final long took;
 	private final boolean timedOut;
@@ -164,7 +164,7 @@ public class ByQueryResponse {
 		return new ByQueryResponseBuilder();
 	}
 
-	public static class Failure {
+	public static final class Failure {
 
 		@Nullable private final String index;
 		@Nullable private final String type;
@@ -306,7 +306,7 @@ public class ByQueryResponse {
 		}
 	}
 
-	public static class SearchFailure {
+	public static final class SearchFailure {
 		private final Throwable reason;
 		@Nullable private final Integer status;
 		@Nullable private final String index;

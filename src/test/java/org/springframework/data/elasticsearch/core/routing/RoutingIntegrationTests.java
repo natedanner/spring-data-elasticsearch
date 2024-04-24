@@ -213,13 +213,16 @@ public abstract class RoutingIntegrationTests {
 
 		@Override
 		public boolean equals(Object o) {
-			if (this == o)
+			if (this == o) {
 				return true;
-			if (!(o instanceof RoutingEntity that))
+			}
+			if (!(o instanceof RoutingEntity that)) {
 				return false;
+			}
 
-			if (!Objects.equals(id, that.id))
+			if (!Objects.equals(id, that.id)) {
 				return false;
+			}
 			return Objects.equals(routing, that.routing);
 		}
 
@@ -234,7 +237,7 @@ public abstract class RoutingIntegrationTests {
 	/**
 	 * Copied from org.elasticsearch.cluster.routing.Murmur3HashFunction from Elasticsearch 7.9.3
 	 */
-	public static class Murmur3HashFunction {
+	public static final class Murmur3HashFunction {
 
 		private Murmur3HashFunction() {
 			// no instance
@@ -244,7 +247,8 @@ public abstract class RoutingIntegrationTests {
 			final byte[] bytesToHash = new byte[routing.length() * 2];
 			for (int i = 0; i < routing.length(); ++i) {
 				final char c = routing.charAt(i);
-				final byte b1 = (byte) c, b2 = (byte) (c >>> 8);
+				final byte b1 = (byte) c;
+				final byte b2 = (byte) (c >>> 8);
 				assert ((b1 & 0xFF) | ((b2 & 0xFF) << 8)) == c; // no information loss
 				bytesToHash[i * 2] = b1;
 				bytesToHash[i * 2 + 1] = b2;

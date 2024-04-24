@@ -131,7 +131,7 @@ public abstract class NestedObjectIntegrationTests {
 	}
 
 	@NotNull
-	abstract protected Query getNestedQuery1();
+	protected abstract Query getNestedQuery1();
 
 	@Test
 	public void shouldIndexMultipleLevelNestedObject() {
@@ -186,7 +186,7 @@ public abstract class NestedObjectIntegrationTests {
 	}
 
 	@NotNull
-	abstract protected Query getNestedQuery2();
+	protected abstract Query getNestedQuery2();
 
 	private List<IndexQuery> createPerson() {
 
@@ -321,7 +321,7 @@ public abstract class NestedObjectIntegrationTests {
 	}
 
 	@NotNull
-	abstract protected Query getNestedQuery3();
+	protected abstract Query getNestedQuery3();
 
 	@Test // DATAES-73
 	public void shouldIndexAndSearchMapAsNestedType() {
@@ -369,7 +369,7 @@ public abstract class NestedObjectIntegrationTests {
 	}
 
 	@NotNull
-	abstract protected Query getNestedQuery4();
+	protected abstract Query getNestedQuery4();
 
 	@Document(indexName = "#{@indexNameProvider.indexName()}-book")
 	static class Book {

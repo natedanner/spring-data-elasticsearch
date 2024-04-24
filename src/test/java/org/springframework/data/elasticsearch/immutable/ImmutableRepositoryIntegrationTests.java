@@ -79,7 +79,8 @@ public abstract class ImmutableRepositoryIntegrationTests {
 
 	@Document(indexName = "#{@indexNameProvider.indexName()}")
 	static class ImmutableEntity {
-		private final String id, name;
+		private final String id;
+		private final String name;
 
 		@PersistenceCreator
 		public ImmutableEntity(String id, String name) {

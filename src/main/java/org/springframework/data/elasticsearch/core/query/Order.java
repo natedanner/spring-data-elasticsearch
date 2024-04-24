@@ -145,7 +145,7 @@ public class Order extends Sort.Order {
 	public static class Nested {
 		private String path;
 		@Nullable private Query filter;
-		@Nullable private Integer maxChildren = null;
+		@Nullable private Integer maxChildren;
 		@Nullable private Nested nested;
 
 		public static Nested of(String path, Function<Nested.Builder, Nested.Builder> builderFunction) {
@@ -190,9 +190,9 @@ public class Order extends Sort.Order {
 
 		public static class Builder {
 			private String path;
-			@Nullable private Query filter = null;
-			@Nullable private Integer maxChildren = null;
-			@Nullable private Nested nested = null;
+			@Nullable private Query filter;
+			@Nullable private Integer maxChildren;
+			@Nullable private Nested nested;
 
 			public Builder(String path) {
 

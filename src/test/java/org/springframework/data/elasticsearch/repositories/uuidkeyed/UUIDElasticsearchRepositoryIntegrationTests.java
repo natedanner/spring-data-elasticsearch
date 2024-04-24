@@ -628,27 +628,37 @@ public abstract class UUIDElasticsearchRepositoryIntegrationTests {
 
 		@Override
 		public boolean equals(Object o) {
-			if (this == o)
+			if (this == o) {
 				return true;
-			if (!(o instanceof SampleEntityUUIDKeyed that))
+			}
+			if (!(o instanceof SampleEntityUUIDKeyed that)) {
 				return false;
+			}
 
-			if (rate != that.rate)
+			if (rate != that.rate) {
 				return false;
-			if (available != that.available)
+			}
+			if (available != that.available) {
 				return false;
-			if (!Objects.equals(id, that.id))
+			}
+			if (!Objects.equals(id, that.id)) {
 				return false;
-			if (!Objects.equals(type, that.type))
+			}
+			if (!Objects.equals(type, that.type)) {
 				return false;
-			if (!Objects.equals(message, that.message))
+			}
+			if (!Objects.equals(message, that.message)) {
 				return false;
-			if (!Objects.equals(scriptedRate, that.scriptedRate))
+			}
+			if (!Objects.equals(scriptedRate, that.scriptedRate)) {
 				return false;
-			if (!Objects.equals(highlightedMessage, that.highlightedMessage))
+			}
+			if (!Objects.equals(highlightedMessage, that.highlightedMessage)) {
 				return false;
-			if (!Objects.equals(location, that.location))
+			}
+			if (!Objects.equals(location, that.location)) {
 				return false;
+			}
 			return Objects.equals(version, that.version);
 		}
 

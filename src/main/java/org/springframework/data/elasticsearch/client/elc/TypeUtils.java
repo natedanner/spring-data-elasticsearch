@@ -459,7 +459,7 @@ final class TypeUtils {
 	 */
 	@Nullable
 	public static List<ExpandWildcard> expandWildcards(@Nullable EnumSet<IndicesOptions.WildcardStates> wildcardStates) {
-		return (wildcardStates != null && !wildcardStates.isEmpty()) ? wildcardStates.stream()
+		return wildcardStates != null && !wildcardStates.isEmpty() ? wildcardStates.stream()
 				.map(wildcardState -> ExpandWildcard.valueOf(wildcardState.name().toLowerCase())).collect(Collectors.toList())
 				: null;
 	}
@@ -474,7 +474,7 @@ final class TypeUtils {
 
 	@Nullable
 	static Document typeMapping(@Nullable TypeMapping typeMapping) {
-		return (typeMapping != null) ? Document.parse(removePrefixFromJson(typeMapping.toString())) : null;
+		return typeMapping != null ? Document.parse(removePrefixFromJson(typeMapping.toString())) : null;
 	}
 
 	public static String removePrefixFromJson(String jsonWithPrefix) {
@@ -495,9 +495,8 @@ final class TypeUtils {
 		Assert.notNull(params, "params must not be null");
 
 		Map<String, JsonData> mappedParams = new LinkedHashMap<>();
-		params.forEach((key, value) -> {
-			mappedParams.put(key, JsonData.of(value));
-		});
+		params.forEach((key, value) ->
+			mappedParams.put(key, JsonData.of(value)));
 		return mappedParams;
 	}
 }

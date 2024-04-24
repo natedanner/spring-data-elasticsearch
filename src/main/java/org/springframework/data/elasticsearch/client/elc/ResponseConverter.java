@@ -103,9 +103,8 @@ class ResponseConverter {
 		Assert.notNull(getComponentTemplateResponse, "getComponentTemplateResponse must not be null");
 
 		var componentTemplates = new ArrayList<TemplateResponse>();
-		getComponentTemplateResponse.componentTemplates().forEach(componentTemplate -> {
-			componentTemplates.add(clusterGetComponentTemplate(componentTemplate));
-		});
+		getComponentTemplateResponse.componentTemplates().forEach(componentTemplate ->
+			componentTemplates.add(clusterGetComponentTemplate(componentTemplate)));
 
 		return componentTemplates;
 	}
@@ -125,9 +124,8 @@ class ResponseConverter {
 
 		var mapping = typeMapping(componentTemplateSummary.mappings());
 		var settings = new Settings();
-		componentTemplateSummary.settings().forEach((key, indexSettings) -> {
-			settings.put(key, Settings.parse(removePrefixFromJson(indexSettings.toString())));
-		});
+		componentTemplateSummary.settings().forEach((key, indexSettings) ->
+			settings.put(key, Settings.parse(removePrefixFromJson(indexSettings.toString()))));
 
 		Function<? super Map.Entry<String, AliasDefinition>, String> keyMapper = Map.Entry::getKey;
 		Function<? super Map.Entry<String, AliasDefinition>, AliasData> valueMapper = entry -> indicesGetAliasData(
@@ -158,7 +156,7 @@ class ResponseConverter {
 
 			Function<IndexSettings, Settings> indexSettingsToSettings = indexSettings -> {
 				Settings parsedSettings = Settings.parse(toJson(indexSettings, jsonpMapper));
-				return (indexSettings.index() != null) ? parsedSettings : new Settings().append("index", parsedSettings);
+				return indexSettings.index() != null ? parsedSettings : new Settings().append("index", parsedSettings);
 			};
 
 			if (indexState.defaults() != null) {
@@ -306,9 +304,8 @@ class ResponseConverter {
 		Assert.notNull(getIndexTemplateResponse, "getIndexTemplateResponse must not be null");
 
 		var componentTemplates = new ArrayList<TemplateResponse>();
-		getIndexTemplateResponse.indexTemplates().forEach(indexTemplateItem -> {
-			componentTemplates.add(indexGetComponentTemplate(indexTemplateItem));
-		});
+		getIndexTemplateResponse.indexTemplates().forEach(indexTemplateItem ->
+			componentTemplates.add(indexGetComponentTemplate(indexTemplateItem)));
 
 		return componentTemplates;
 	}
@@ -335,7 +332,7 @@ class ResponseConverter {
 			}
 
 			Settings parsedSettings = Settings.parse(toJson(indexSettings, jsonpMapper));
-			return (indexSettings.index() != null) ? parsedSettings : new Settings().append("index", parsedSettings);
+			return indexSettings.index() != null ? parsedSettings : new Settings().append("index", parsedSettings);
 		};
 		var settings = indexSettingsToSettings.apply(indexTemplateSummary.settings());
 

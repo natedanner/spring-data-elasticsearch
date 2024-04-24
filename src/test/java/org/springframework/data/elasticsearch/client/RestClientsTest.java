@@ -156,7 +156,7 @@ public class RestClientsTest {
 						.withHeader("def2", new EqualToPattern("def2-1")) //
 						.withHeader("supplied", new EqualToPattern("val0")) //
 						// on the first call Elasticsearch does the version check and thus already increments the counter
-						.withHeader("supplied", new EqualToPattern("val" + (i))) //
+						.withHeader("supplied", new EqualToPattern("val" + i)) //
 				);
 			}
 
@@ -214,8 +214,6 @@ public class RestClientsTest {
 					this.id = id;
 				}
 			}
-			;
-
 			clientUnderTest.index(new Foo("42"));
 
 			verify(putRequestedFor(urlMatching(urlPattern)) //
@@ -321,7 +319,7 @@ public class RestClientsTest {
 	/**
 	 * base class to create {@link ClientUnderTest} implementations.
 	 */
-	static abstract class ClientUnderTestFactory {
+	abstract static class ClientUnderTestFactory {
 		abstract ClientUnderTest create(ClientConfiguration clientConfiguration);
 
 		@Override

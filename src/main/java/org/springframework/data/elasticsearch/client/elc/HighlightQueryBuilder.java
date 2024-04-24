@@ -209,7 +209,7 @@ class HighlightQueryBuilder {
 			builder.type(highlighterType(parameters.getType()));
 		}
 
-		if ((parameters).getFragmentOffset() > -1) {
+		if (parameters.getFragmentOffset() > -1) {
 			builder.fragmentOffset(parameters.getFragmentOffset());
 		}
 

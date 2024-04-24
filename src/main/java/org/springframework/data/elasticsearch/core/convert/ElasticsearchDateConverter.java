@@ -39,7 +39,7 @@ import org.springframework.util.Assert;
  * @author Peter-Josef Meisch
  * @since 4.0
  */
-final public class ElasticsearchDateConverter {
+public final class ElasticsearchDateConverter {
 
 	private static final ConcurrentHashMap<String, ElasticsearchDateConverter> converters = new ConcurrentHashMap<>();
 

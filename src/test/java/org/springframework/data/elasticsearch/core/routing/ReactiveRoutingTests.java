@@ -153,13 +153,16 @@ public abstract class ReactiveRoutingTests {
 
 		@Override
 		public boolean equals(Object o) {
-			if (this == o)
+			if (this == o) {
 				return true;
-			if (!(o instanceof RoutingEntity that))
+			}
+			if (!(o instanceof RoutingEntity that)) {
 				return false;
+			}
 
-			if (!Objects.equals(id, that.id))
+			if (!Objects.equals(id, that.id)) {
 				return false;
+			}
 			return Objects.equals(routing, that.routing);
 		}
 

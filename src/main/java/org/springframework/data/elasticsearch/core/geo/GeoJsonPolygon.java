@@ -34,7 +34,7 @@ import org.springframework.util.Assert;
  * @since 4.1
  * @see <a href="https://geojson.org/geojson-spec.html#polygon">https://geojson.org/geojson-spec.html#polygon</a>
  */
-public class GeoJsonPolygon implements GeoJson<Iterable<GeoJsonLineString>> {
+public final class GeoJsonPolygon implements GeoJson<Iterable<GeoJsonLineString>> {
 
 	public static final String TYPE = "Polygon";
 
@@ -202,10 +202,12 @@ public class GeoJsonPolygon implements GeoJson<Iterable<GeoJsonLineString>> {
 
 	@Override
 	public boolean equals(Object o) {
-		if (this == o)
+		if (this == o) {
 			return true;
-		if (o == null || getClass() != o.getClass())
+		}
+		if (o == null || getClass() != o.getClass()) {
 			return false;
+		}
 
 		GeoJsonPolygon that = (GeoJsonPolygon) o;
 

@@ -130,12 +130,12 @@ public abstract class HighlightCommonParameters {
 	}
 
 	@SuppressWarnings("unchecked")
-	public static abstract class HighlightCommonParametersBuilder<SELF extends HighlightCommonParametersBuilder<SELF>> {
+	public abstract static class HighlightCommonParametersBuilder<SELF extends HighlightCommonParametersBuilder<SELF>> {
 		private String boundaryChars = "";
 		private int boundaryMaxScan = -1;
 		private String boundaryScanner = "";
 		private String boundaryScannerLocale = "";
-		private boolean forceSource = false;
+		private boolean forceSource;
 		private String fragmenter = "";
 		private int fragmentSize = -1;
 		private int noMatchSize = -1;
@@ -143,7 +143,7 @@ public abstract class HighlightCommonParameters {
 		/**
 		 * Only the search query part of the {@link Query} takes effect, others are just ignored.
 		 */
-		@Nullable private Query highlightQuery = null;
+		@Nullable private Query highlightQuery;
 		private String order = "";
 		private int phraseLimit = -1;
 		private String[] preTags = new String[0];

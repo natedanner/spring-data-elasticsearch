@@ -91,9 +91,8 @@ public abstract class ReactiveCallbackIntegrationTests {
 
 		operations.save(sample) //
 				.as(StepVerifier::create) //
-				.consumeNextWith(it -> { //
-					assertThat(it.text).isEqualTo("reactive-converted"); //
-				}) //
+				.consumeNextWith(it -> //
+					assertThat(it.text).isEqualTo("reactive-converted")) //
 				.verifyComplete();
 	}
 

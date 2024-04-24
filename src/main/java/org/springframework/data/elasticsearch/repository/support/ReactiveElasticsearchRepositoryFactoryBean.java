@@ -35,7 +35,7 @@ public class ReactiveElasticsearchRepositoryFactoryBean<T extends Repository<S, 
 		extends RepositoryFactoryBeanSupport<T, S, ID> {
 
 	private @Nullable ReactiveElasticsearchOperations operations;
-	private boolean mappingContextConfigured = false;
+	private boolean mappingContextConfigured;
 
 	/**
 	 * Creates a new {@link ReactiveElasticsearchRepositoryFactoryBean} for the given repository interface.

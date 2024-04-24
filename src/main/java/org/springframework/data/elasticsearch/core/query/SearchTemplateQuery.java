@@ -25,7 +25,7 @@ import org.springframework.lang.Nullable;
  */
 public class SearchTemplateQuery extends BaseQuery {
 
-	@Nullable final private String id;
+	@Nullable private final String id;
 	@Nullable final String source;
 	@Nullable final Map<String, Object> params;
 

@@ -324,8 +324,8 @@ public class ElasticsearchStringQueryUnitTests extends ElasticsearchStringQueryU
 	@DisplayName("should escape Strings in collection query parameters")
 	void shouldEscapeStringsInCollectionsQueryParameters() throws Exception {
 
-		final List<String> another_string = Arrays.asList("hello \"Stranger\"", "Another string");
-		List<String> params = new ArrayList<>(another_string);
+		final List<String> anotherString = Arrays.asList("hello \"Stranger\"", "Another string");
+		List<String> params = new ArrayList<>(anotherString);
 		org.springframework.data.elasticsearch.core.query.Query query = createQuery("findByNameIn", params);
 
 		assertThat(query).isInstanceOf(StringQuery.class);

@@ -36,7 +36,7 @@ import org.springframework.util.Assert;
  * @since 5.3
  * @author Haibo Liu
  */
-public class ElasticsearchQueryValueConversionService implements ConversionService {
+public final class ElasticsearchQueryValueConversionService implements ConversionService {
 
 	private static final Map<ConversionService, ElasticsearchQueryValueConversionService> CACHE = new ConcurrentHashMap<>();
 

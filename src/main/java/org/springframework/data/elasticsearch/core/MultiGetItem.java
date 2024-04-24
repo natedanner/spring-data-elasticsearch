@@ -26,7 +26,7 @@ import org.springframework.lang.Nullable;
  * @author Peter-Josef Meisch
  * @since 4.2
  */
-public class MultiGetItem<T> {
+public final class MultiGetItem<T> {
 	@Nullable private final T item;
 	@Nullable private final Failure failure;
 
@@ -57,7 +57,7 @@ public class MultiGetItem<T> {
 		return failure;
 	}
 
-	public static class Failure {
+	public static final class Failure {
 		@Nullable private final String index;
 		@Nullable private final String type;
 		@Nullable private final String id;

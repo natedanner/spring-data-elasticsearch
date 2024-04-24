@@ -87,7 +87,7 @@ public abstract class ReactiveSearchAfterIntegrationTests {
 			query.setSearchAfter(searchAfter);
 			List<SearchHit<Entity>> searchHits = operations.search(query, Entity.class).collectList().block();
 
-			if (searchHits.size() == 0) {
+			if (searchHits.isEmpty()) {
 				break;
 			}
 			foundEntities.addAll(searchHits.stream().map(SearchHit::getContent).collect(Collectors.toList()));
@@ -133,13 +133,16 @@ public abstract class ReactiveSearchAfterIntegrationTests {
 
 		@Override
 		public boolean equals(Object o) {
-			if (this == o)
+			if (this == o) {
 				return true;
-			if (!(o instanceof Entity entity))
+			}
+			if (!(o instanceof Entity entity)) {
 				return false;
+			}
 
-			if (!Objects.equals(id, entity.id))
+			if (!Objects.equals(id, entity.id)) {
 				return false;
+			}
 			return Objects.equals(message, entity.message);
 		}
 

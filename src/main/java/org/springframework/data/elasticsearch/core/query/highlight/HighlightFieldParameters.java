@@ -19,7 +19,7 @@ package org.springframework.data.elasticsearch.core.query.highlight;
  * @author Peter-Josef Meisch
  * @since 4.3
  */
-public class HighlightFieldParameters extends HighlightCommonParameters {
+public final class HighlightFieldParameters extends HighlightCommonParameters {
 	private final int fragmentOffset;
 	private final String[] matchedFields;
 

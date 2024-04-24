@@ -540,7 +540,7 @@ public class EntityOperations {
 	 * @param <T>
 	 * @since 3.2
 	 */
-	private static class AdaptableMappedEntity<T> extends MappedEntity<T> implements AdaptableEntity<T> {
+	private static final class AdaptableMappedEntity<T> extends MappedEntity<T> implements AdaptableEntity<T> {
 
 		private final ElasticsearchPersistentEntity<?> entity;
 		private final ConvertingPropertyAccessor<T> propertyAccessor;

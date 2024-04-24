@@ -339,7 +339,7 @@ public final class ElasticsearchClients {
 
 		Consumer<String> setHeaderIfNotPresent = header -> {
 			if (restClientOptionsBuilder.build().headers().stream() //
-					.noneMatch((h) -> h.getKey().equalsIgnoreCase(header))) {
+					.noneMatch(h -> h.getKey().equalsIgnoreCase(header))) {
 				// need to add the compatibility header, this is only done automatically when not passing in custom options.
 				// code copied from RestClientTransport as it is not available outside the package
 				restClientOptionsBuilder.addHeader(header, jsonContentType.toString());

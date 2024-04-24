@@ -42,8 +42,8 @@ class RequestConverterTest {
 
 	private static final SimpleElasticsearchMappingContext mappingContext = new SimpleElasticsearchMappingContext();
 	private static final MappingElasticsearchConverter converter = new MappingElasticsearchConverter(mappingContext);
-	private JacksonJsonpMapper jsonpMapper = new JacksonJsonpMapper();
-	private RequestConverter requestConverter = new RequestConverter(converter, jsonpMapper);
+	private final JacksonJsonpMapper jsonpMapper = new JacksonJsonpMapper();
+	private final RequestConverter requestConverter = new RequestConverter(converter, jsonpMapper);
 
 	@Test // #2316
 	@DisplayName("should add docvalue_fields")

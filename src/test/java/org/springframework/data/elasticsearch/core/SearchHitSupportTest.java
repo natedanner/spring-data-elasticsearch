@@ -77,7 +77,7 @@ class SearchHitSupportTest {
 
 	private static class TestStringSearchHitsIterator implements SearchHitsIterator<String> {
 		private final Iterator<String> iterator = Arrays.asList("one", "two").iterator();
-		private boolean closed = false;
+		private boolean closed;
 
 		@Override
 		public AggregationsContainer<?> getAggregations() {

@@ -48,7 +48,7 @@ import static org.assertj.core.api.Assertions.*;
  */
 class SearchDocumentResponseBuilderUnitTests {
 
-	private JacksonJsonpMapper jsonpMapper = new JacksonJsonpMapper();
+	private final JacksonJsonpMapper jsonpMapper = new JacksonJsonpMapper();
 
 	@Test // #2681
 	void shouldGetPhraseSuggestion() throws JSONException {

@@ -34,7 +34,7 @@ import org.springframework.util.Assert;
  * @see <a href=
  *      "https://geojson.org/geojson-spec.html#multilinestring">https://geojson.org/geojson-spec.html#multilinestring</a>
  */
-public class GeoJsonMultiLineString implements GeoJson<Iterable<GeoJsonLineString>> {
+public final class GeoJsonMultiLineString implements GeoJson<Iterable<GeoJsonLineString>> {
 
 	public static final String TYPE = "MultiLineString";
 
@@ -82,10 +82,12 @@ public class GeoJsonMultiLineString implements GeoJson<Iterable<GeoJsonLineStrin
 
 	@Override
 	public boolean equals(Object o) {
-		if (this == o)
+		if (this == o) {
 			return true;
-		if (o == null || getClass() != o.getClass())
+		}
+		if (o == null || getClass() != o.getClass()) {
 			return false;
+		}
 
 		GeoJsonMultiLineString that = (GeoJsonMultiLineString) o;
 

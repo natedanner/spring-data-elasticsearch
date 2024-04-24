@@ -28,11 +28,11 @@ import java.util.Map;
  * @author Peter-Josef Meisch
  * @since 4.1
  */
-public class PutTemplateRequest {
+public final class PutTemplateRequest {
 	private final String name;
 	private final String[] indexPatterns;
-	@Nullable final private Settings settings;
-	@Nullable final private Document mappings;
+	@Nullable private final Settings settings;
+	@Nullable private final Document mappings;
 	@Nullable final AliasActions aliasActions;
 	private final int order;
 	@Nullable final Integer version;
@@ -90,7 +90,7 @@ public class PutTemplateRequest {
 		@Nullable private Settings settings;
 		@Nullable private Document mappings;
 		@Nullable AliasActions aliasActions;
-		private int order = 0;
+		private int order;
 		@Nullable Integer version;
 
 		private TemplateRequestBuilder(String name, String... indexPatterns) {

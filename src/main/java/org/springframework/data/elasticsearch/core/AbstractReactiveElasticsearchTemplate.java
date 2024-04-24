@@ -66,7 +66,7 @@ import org.springframework.util.Assert;
  * @author Peter-Josef Meisch
  * @since 4.4
  */
-abstract public class AbstractReactiveElasticsearchTemplate
+public abstract class AbstractReactiveElasticsearchTemplate
 		implements ReactiveElasticsearchOperations, ApplicationContextAware {
 
 	protected final ElasticsearchConverter converter;
@@ -112,7 +112,7 @@ abstract public class AbstractReactiveElasticsearchTemplate
 		return copy;
 	}
 
-	abstract protected AbstractReactiveElasticsearchTemplate doCopy();
+	protected abstract AbstractReactiveElasticsearchTemplate doCopy();
 
 	private ElasticsearchConverter createElasticsearchConverter() {
 		MappingElasticsearchConverter mappingElasticsearchConverter = new MappingElasticsearchConverter(
@@ -357,9 +357,9 @@ abstract public class AbstractReactiveElasticsearchTemplate
 				}).flatMap(saved -> maybeCallbackAfterSave(saved, index));
 	}
 
-	abstract protected <T> Mono<Tuple2<T, IndexResponseMetaData>> doIndex(T entity, IndexCoordinates index);
+	protected abstract <T> Mono<Tuple2<T, IndexResponseMetaData>> doIndex(T entity, IndexCoordinates index);
 
-	abstract protected Mono<Boolean> doExists(String id, IndexCoordinates index);
+	protected abstract Mono<Boolean> doExists(String id, IndexCoordinates index);
 
 	@Override
 	public <T> Mono<T> get(String id, Class<T> entityType) {
@@ -406,7 +406,7 @@ abstract public class AbstractReactiveElasticsearchTemplate
 		return doDeleteById(id, routingResolver.getRouting(), index);
 	}
 
-	abstract protected Mono<String> doDeleteById(String id, @Nullable String routing, IndexCoordinates index);
+	protected abstract Mono<String> doDeleteById(String id, @Nullable String routing, IndexCoordinates index);
 
 	@Override
 	public Mono<ByQueryResponse> delete(Query query, Class<?> entityType) {
@@ -471,10 +471,10 @@ abstract public class AbstractReactiveElasticsearchTemplate
 				.map(ReactiveSearchHitSupport::searchHitsFor);
 	}
 
-	abstract protected Flux<SearchDocument> doFind(Query query, Class<?> clazz, IndexCoordinates index);
+	protected abstract Flux<SearchDocument> doFind(Query query, Class<?> clazz, IndexCoordinates index);
 
 	@SuppressWarnings("unused")
-	abstract protected <T> Mono<SearchDocumentResponse> doFindForResponse(Query query, Class<?> clazz,
+	protected abstract <T> Mono<SearchDocumentResponse> doFindForResponse(Query query, Class<?> clazz,
 			IndexCoordinates index);
 
 	@Override
@@ -511,7 +511,7 @@ abstract public class AbstractReactiveElasticsearchTemplate
 		return doCount(query, entityType, index);
 	}
 
-	abstract protected Mono<Long> doCount(Query query, Class<?> entityType, IndexCoordinates index);
+	protected abstract Mono<Long> doCount(Query query, Class<?> entityType, IndexCoordinates index);
 
 	@Override
 	public Mono<String> openPointInTime(IndexCoordinates index, Duration keepAlive, Boolean ignoreUnavailable) {

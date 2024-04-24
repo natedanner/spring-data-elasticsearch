@@ -71,9 +71,8 @@ public abstract class ReactiveQueryKeywordsIntegrationTests {
 		loadEntities();
 		repository.findByMessageExists().mapNotNull(SearchHit::getId).collectList() //
 				.as(StepVerifier::create) //
-				.assertNext(ids -> { //
-					assertThat(ids).containsExactlyInAnyOrder("empty-message", "with-message"); //
-				}).verifyComplete();
+				.assertNext(ids -> //
+					assertThat(ids).containsExactlyInAnyOrder("empty-message", "with-message")).verifyComplete();
 	}
 
 	@Test // #1909
@@ -83,9 +82,8 @@ public abstract class ReactiveQueryKeywordsIntegrationTests {
 		loadEntities();
 		repository.findByMessageIsNotNull().mapNotNull(SearchHit::getId).collectList() //
 				.as(StepVerifier::create) //
-				.assertNext(ids -> { //
-					assertThat(ids).containsExactlyInAnyOrder("empty-message", "with-message"); //
-				}).verifyComplete();
+				.assertNext(ids -> //
+					assertThat(ids).containsExactlyInAnyOrder("empty-message", "with-message")).verifyComplete();
 	}
 
 	@Test // #1909
@@ -95,9 +93,8 @@ public abstract class ReactiveQueryKeywordsIntegrationTests {
 		loadEntities();
 		repository.findByMessageIsNull().mapNotNull(SearchHit::getId).collectList() //
 				.as(StepVerifier::create) //
-				.assertNext(ids -> { //
-					assertThat(ids).containsExactlyInAnyOrder("null-message"); //
-				}).verifyComplete();
+				.assertNext(ids -> //
+					assertThat(ids).containsExactlyInAnyOrder("null-message")).verifyComplete();
 	}
 
 	@Test // #1909
@@ -107,9 +104,8 @@ public abstract class ReactiveQueryKeywordsIntegrationTests {
 		loadEntities();
 		repository.findByMessageIsEmpty().mapNotNull(SearchHit::getId).collectList() //
 				.as(StepVerifier::create) //
-				.assertNext(ids -> { //
-					assertThat(ids).containsExactlyInAnyOrder("empty-message"); //
-				}).verifyComplete();
+				.assertNext(ids -> //
+					assertThat(ids).containsExactlyInAnyOrder("empty-message")).verifyComplete();
 	}
 
 	@Test // #1909
@@ -119,9 +115,8 @@ public abstract class ReactiveQueryKeywordsIntegrationTests {
 		loadEntities();
 		repository.findByMessageIsNotEmpty().mapNotNull(SearchHit::getId).collectList() //
 				.as(StepVerifier::create) //
-				.assertNext(ids -> { //
-					assertThat(ids).containsExactlyInAnyOrder("with-message"); //
-				}).verifyComplete();
+				.assertNext(ids -> //
+					assertThat(ids).containsExactlyInAnyOrder("with-message")).verifyComplete();
 	}
 
 	@Test // #2162

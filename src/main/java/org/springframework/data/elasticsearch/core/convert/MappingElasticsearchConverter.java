@@ -733,7 +733,7 @@ public class MappingElasticsearchConverter
 	 * Class to do the actual writing. The methods originally were in the MappingElasticsearchConverter class, but are
 	 * refactored to allow for keeping state during the conversion of an object.
 	 */
-	static private class Writer extends Base {
+	private static class Writer extends Base {
 
 		private boolean writeTypeHints = true;
 
@@ -988,13 +988,8 @@ public class MappingElasticsearchConverter
 		}
 
 		private static boolean hasEmptyValue(Object value) {
-
-			if (value instanceof String s && s.isEmpty() || value instanceof Collection<?> c && c.isEmpty()
-					|| value instanceof Map<?, ?> m && m.isEmpty()) {
-				return true;
-			}
-
-			return false;
+			return value instanceof String s && s.isEmpty() || value instanceof Collection<?> c && c.isEmpty()
+					|| value instanceof Map<?, ?> m && m.isEmpty();
 		}
 
 		@SuppressWarnings("unchecked")
@@ -1396,7 +1391,7 @@ public class MappingElasticsearchConverter
 
 			if (properties.length > 1) {
 				var persistentProperty = persistentEntity.getPersistentProperty(propertyName);
-				return (persistentProperty != null)
+				return persistentProperty != null
 						? fieldName + "." + updateFieldNames(properties[1], mappingContext.getPersistentEntity(persistentProperty))
 						: fieldName;
 			} else {

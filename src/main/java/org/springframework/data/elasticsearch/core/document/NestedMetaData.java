@@ -22,7 +22,7 @@ import org.springframework.lang.Nullable;
  *
  * @author Peter-Josef Meisch
  */
-public class NestedMetaData {
+public final class NestedMetaData {
 
 	private final String field;
 	private final int offset;

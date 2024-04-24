@@ -31,7 +31,7 @@ import org.springframework.util.Assert;
  * @see <a href=
  *      "https://geojson.org/geojson-spec.html#geometry-collection">https://geojson.org/geojson-spec.html#geometry-collection</a>
  */
-public class GeoJsonGeometryCollection implements GeoJson<Iterable<GeoJson<?>>> {
+public final class GeoJsonGeometryCollection implements GeoJson<Iterable<GeoJson<?>>> {
 
 	public static final String TYPE = "GeometryCollection";
 
@@ -69,10 +69,12 @@ public class GeoJsonGeometryCollection implements GeoJson<Iterable<GeoJson<?>>> 
 
 	@Override
 	public boolean equals(Object o) {
-		if (this == o)
+		if (this == o) {
 			return true;
-		if (o == null || getClass() != o.getClass())
+		}
+		if (o == null || getClass() != o.getClass()) {
 			return false;
+		}
 
 		GeoJsonGeometryCollection that = (GeoJsonGeometryCollection) o;
 

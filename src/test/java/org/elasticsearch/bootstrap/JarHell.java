@@ -36,7 +36,7 @@ import java.util.function.Consumer;
  *
  * @author Mark Paluch
  */
-public class JarHell {
+public final class JarHell {
 
 	private JarHell() {}
 

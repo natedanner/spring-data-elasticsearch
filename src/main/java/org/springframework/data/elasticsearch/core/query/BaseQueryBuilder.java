@@ -55,7 +55,7 @@ public abstract class BaseQueryBuilder<Q extends BaseQuery, SELF extends BaseQue
 	@Nullable private Integer trackTotalHitsUpTo;
 	@Nullable private Duration scrollTime;
 	@Nullable private Duration timeout;
-	boolean explain = false;
+	boolean explain;
 	@Nullable private List<Object> searchAfter;
 
 	@Nullable private List<IndexBoost> indicesBoost;

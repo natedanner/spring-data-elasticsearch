@@ -111,7 +111,7 @@ public final class SearchHitSupport {
 	}
 
 	public static <T> SearchPage<T> searchPageFor(SearchHits<T> searchHits, @Nullable Pageable pageable) {
-		return new SearchPageImpl<>(searchHits, (pageable != null) ? pageable : Pageable.unpaged());
+		return new SearchPageImpl<>(searchHits, pageable != null ? pageable : Pageable.unpaged());
 	}
 
 	/**

@@ -56,7 +56,7 @@ abstract class CallbackIntegrationTests {
 	private AbstractElasticsearchTemplate operations;
 	@Autowired private IndexNameProvider indexNameProvider;
 
-	@Nullable private static SeqNoPrimaryTerm seqNoPrimaryTerm = null;
+	@Nullable private static SeqNoPrimaryTerm seqNoPrimaryTerm;
 
 	@Configuration
 	static class Config {

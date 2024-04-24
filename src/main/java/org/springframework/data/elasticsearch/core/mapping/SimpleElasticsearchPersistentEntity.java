@@ -536,7 +536,7 @@ public class SimpleElasticsearchPersistentEntity<T> extends BasicPersistentEntit
 	 * internal class to collect settings values from the {@link Document} and {@link Setting} annotations-
 	 */
 	private static class SettingsParameter {
-		boolean useServerConfiguration = false;
+		boolean useServerConfiguration;
 		@Nullable String settingPath;
 		short shards;
 		short replicas;

@@ -36,7 +36,7 @@ import org.springframework.lang.Nullable;
  * @author Mark Paluch
  * @since 3.2
  */
-public class BulkOptions {
+public final class BulkOptions {
 
 	private static final BulkOptions defaultOptions = builder().build();
 
@@ -101,7 +101,7 @@ public class BulkOptions {
 	/**
 	 * Builder for {@link BulkOptions}.
 	 */
-	public static class BulkOptionsBuilder {
+	public static final class BulkOptionsBuilder {
 
 		private @Nullable Duration timeout;
 		private @Nullable RefreshPolicy refreshPolicy;

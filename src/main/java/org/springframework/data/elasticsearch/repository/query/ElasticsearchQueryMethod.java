@@ -76,7 +76,7 @@ public class ElasticsearchQueryMethod extends QueryMethod {
 	// base class uses them in order to use our variables
 	protected final Method method;
 	protected final Class<?> unwrappedReturnType;
-	@Nullable private Boolean unwrappedReturnTypeFromSearchHit = null;
+	@Nullable private Boolean unwrappedReturnTypeFromSearchHit;
 
 	private final MappingContext<? extends ElasticsearchPersistentEntity<?>, ElasticsearchPersistentProperty> mappingContext;
 	@Nullable private ElasticsearchEntityMetadata<?> metadata;
@@ -212,7 +212,7 @@ public class ElasticsearchQueryMethod extends QueryMethod {
 
 		try {
 			// dealing with Collection<SearchHit<T>>, getting to T
-			ParameterizedType methodGenericReturnType = ((ParameterizedType) method.getGenericReturnType());
+			ParameterizedType methodGenericReturnType = (ParameterizedType) method.getGenericReturnType();
 			if (isAllowedGenericType(methodGenericReturnType)) {
 				ParameterizedType collectionTypeArgument = (ParameterizedType) methodGenericReturnType
 						.getActualTypeArguments()[0];

@@ -236,8 +236,7 @@ public class IndicesTemplate extends ChildTemplate<ElasticsearchTransport, Elast
 		GetMappingRequest getMappingRequest = requestConverter.indicesGetMappingRequest(indexCoordinates);
 		GetMappingResponse getMappingResponse = execute(client -> client.getMapping(getMappingRequest));
 
-		Document mappingResponse = responseConverter.indicesGetMapping(getMappingResponse, indexCoordinates);
-		return mappingResponse;
+		return responseConverter.indicesGetMapping(getMappingResponse, indexCoordinates);
 	}
 
 	@Override
@@ -443,7 +442,7 @@ public class IndicesTemplate extends ChildTemplate<ElasticsearchTransport, Elast
 
 	@Override
 	public IndexCoordinates getIndexCoordinates() {
-		return (boundClass != null) ? getIndexCoordinatesFor(boundClass) : Objects.requireNonNull(boundIndex);
+		return boundClass != null ? getIndexCoordinatesFor(boundClass) : Objects.requireNonNull(boundIndex);
 	}
 
 	public IndexCoordinates getIndexCoordinatesFor(Class<?> clazz) {

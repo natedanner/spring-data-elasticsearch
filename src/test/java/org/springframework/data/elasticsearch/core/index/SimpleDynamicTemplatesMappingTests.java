@@ -44,24 +44,24 @@ public class SimpleDynamicTemplatesMappingTests extends MappingContextBaseTests 
 
 		String mapping = getMappingBuilder().buildPropertyMapping(SampleDynamicTemplatesEntity.class);
 
-		String EXPECTED_MAPPING_ONE = "{\"dynamic_templates\":" + "[{\"with_custom_analyzer\":{"
+		String expectedMappingOne = "{\"dynamic_templates\":" + "[{\"with_custom_analyzer\":{"
 				+ "\"mapping\":{\"type\":\"string\",\"analyzer\":\"standard_lowercase_asciifolding\"},"
 				+ "\"path_match\":\"names.*\"}}]," + "\"properties\":{\"names\":{\"type\":\"object\"}}}";
 
-		assertEquals(EXPECTED_MAPPING_ONE, mapping, false);
+		assertEquals(expectedMappingOne, mapping, false);
 	}
 
 	@Test // DATAES-568
 	public void testCorrectDynamicTemplatesMappingsTwo() throws JSONException {
 
 		String mapping = getMappingBuilder().buildPropertyMapping(SampleDynamicTemplatesEntityTwo.class);
-		String EXPECTED_MAPPING_TWO = "{\"dynamic_templates\":" + "[{\"with_custom_analyzer\":{"
+		String expectedMappingTwo = "{\"dynamic_templates\":" + "[{\"with_custom_analyzer\":{"
 				+ "\"mapping\":{\"type\":\"string\",\"analyzer\":\"standard_lowercase_asciifolding\"},"
 				+ "\"path_match\":\"names.*\"}}," + "{\"participantA1_with_custom_analyzer\":{"
 				+ "\"mapping\":{\"type\":\"string\",\"analyzer\":\"standard_lowercase_asciifolding\"},"
 				+ "\"path_match\":\"participantA1.*\"}}]," + "\"properties\":{\"names\":{\"type\":\"object\"}}}";
 
-		assertEquals(EXPECTED_MAPPING_TWO, mapping, false);
+		assertEquals(expectedMappingTwo, mapping, false);
 	}
 
 	/**

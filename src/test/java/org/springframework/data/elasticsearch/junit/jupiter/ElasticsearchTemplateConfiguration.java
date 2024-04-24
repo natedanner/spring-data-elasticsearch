@@ -62,12 +62,10 @@ public class ElasticsearchTemplateConfiguration extends ElasticsearchConfigurati
 		}
 
 		// noinspection UnnecessaryLocalVariable
-		ClientConfiguration clientConfiguration = configurationBuilder //
+		return configurationBuilder //
 				.withConnectTimeout(Duration.ofSeconds(20)) //
 				.withSocketTimeout(Duration.ofSeconds(20)) //
 				.build();
-
-		return clientConfiguration;
 	}
 
 	@Override

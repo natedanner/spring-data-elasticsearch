@@ -31,7 +31,7 @@ import org.springframework.lang.Nullable;
  * @author Farid Faoudi
  * @see <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-update.html">docs</a>
  */
-public class UpdateQuery {
+public final class UpdateQuery {
 
 	private final String id;
 	@Nullable private final Document document;
@@ -274,12 +274,12 @@ public class UpdateQuery {
 
 	public static final class Builder {
 		private String id;
-		@Nullable private String script = null;
+		@Nullable private String script;
 		@Nullable private Map<String, Object> params;
-		@Nullable private Document document = null;
-		@Nullable private Document upsert = null;
-		@Nullable private String lang = null;
-		@Nullable private String routing = null;
+		@Nullable private Document document;
+		@Nullable private Document upsert;
+		@Nullable private String lang;
+		@Nullable private String routing;
 		@Nullable private Boolean scriptedUpsert;
 		@Nullable private Boolean docAsUpsert;
 		@Nullable private Boolean fetchSource;

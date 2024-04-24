@@ -29,11 +29,11 @@ import org.springframework.util.Assert;
  * @author Peter-Josef Meisch
  * @since 4.1
  */
-public class GeoJsonMultiPolygon implements GeoJson<Iterable<GeoJsonPolygon>> {
+public final class GeoJsonMultiPolygon implements GeoJson<Iterable<GeoJsonPolygon>> {
 
 	public static final String TYPE = "MultiPolygon";
 
-	private List<GeoJsonPolygon> coordinates = new ArrayList<>();
+	private final List<GeoJsonPolygon> coordinates = new ArrayList<>();
 
 	private GeoJsonMultiPolygon(List<GeoJsonPolygon> polygons) {
 		this.coordinates.addAll(polygons);
@@ -63,10 +63,12 @@ public class GeoJsonMultiPolygon implements GeoJson<Iterable<GeoJsonPolygon>> {
 
 	@Override
 	public boolean equals(Object o) {
-		if (this == o)
+		if (this == o) {
 			return true;
-		if (o == null || getClass() != o.getClass())
+		}
+		if (o == null || getClass() != o.getClass()) {
 			return false;
+		}
 
 		GeoJsonMultiPolygon that = (GeoJsonMultiPolygon) o;
 

@@ -58,7 +58,7 @@ public class SearchHit<T> {
 		this.id = id;
 		this.routing = routing;
 		this.score = score;
-		this.sortValues = (sortValues != null) ? Arrays.asList(sortValues) : new ArrayList<>();
+		this.sortValues = sortValues != null ? Arrays.asList(sortValues) : new ArrayList<>();
 
 		if (highlightFields != null) {
 			this.highlightFields.putAll(highlightFields);

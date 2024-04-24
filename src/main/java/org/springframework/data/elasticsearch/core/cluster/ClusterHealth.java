@@ -21,7 +21,7 @@ package org.springframework.data.elasticsearch.core.cluster;
  * @author Peter-Josef Meisch
  * @since 4.2
  */
-public class ClusterHealth {
+public final class ClusterHealth {
 
 	private final String clusterName;
 	private final String status;

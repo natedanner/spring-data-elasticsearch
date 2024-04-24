@@ -67,7 +67,7 @@ import org.springframework.lang.Nullable;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class DevTests {
 
-	private static Log LOGGER = LogFactory.getLog(DevTests.class);
+	private static Log logger = LogFactory.getLog(DevTests.class);
 
 	private static final String INDEX = "appdata-index";
 

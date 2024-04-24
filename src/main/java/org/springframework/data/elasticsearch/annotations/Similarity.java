@@ -20,8 +20,8 @@ package org.springframework.data.elasticsearch.annotations;
  * @since 4.0
  */
 public final class Similarity {
-	public final static String Default = "default";
-	public final static String BM25 = "BM25";
-	public final static String classic = "classic";
-	public final static String Boolean = "boolean";
+	public static final String Default = "default";
+	public static final String BM25 = "BM25";
+	public static final String classic = "classic";
+	public static final String Boolean = "boolean";
 }

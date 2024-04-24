@@ -67,7 +67,7 @@ public class BaseQuery implements Query {
 	@Nullable protected Integer trackTotalHitsUpTo;
 	@Nullable protected Duration scrollTime;
 	@Nullable protected Duration timeout;
-	private boolean explain = false;
+	private boolean explain;
 	@Nullable protected List<Object> searchAfter;
 	@Nullable protected List<IndexBoost> indicesBoost;
 	protected List<RescorerQuery> rescorerQueries = new ArrayList<>();
@@ -75,9 +75,9 @@ public class BaseQuery implements Query {
 	protected List<IdWithRouting> idsWithRouting = Collections.emptyList();
 	protected List<RuntimeField> runtimeFields = new ArrayList<>();
 	@Nullable protected PointInTime pointInTime;
-	private boolean queryIsUpdatedByConverter = false;
-	@Nullable private Integer reactiveBatchSize = null;
-	@Nullable private Boolean allowNoIndices = null;
+	private boolean queryIsUpdatedByConverter;
+	@Nullable private Integer reactiveBatchSize;
+	@Nullable private Boolean allowNoIndices;
 	private EnumSet<IndicesOptions.WildcardStates> expandWildcards;
 	private List<DocValueField> docValueFields = new ArrayList<>();
 	private List<ScriptedField> scriptedFields = new ArrayList<>();

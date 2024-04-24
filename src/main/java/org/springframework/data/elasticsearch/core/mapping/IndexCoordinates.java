@@ -27,7 +27,7 @@ import org.springframework.util.Assert;
  * @author Peter-Josef Meisch
  * @since 4.0
  */
-public class IndexCoordinates {
+public final class IndexCoordinates {
 
 	public static final String TYPE = "_doc";
 
@@ -56,10 +56,12 @@ public class IndexCoordinates {
 	 */
 	@Override
 	public boolean equals(Object o) {
-		if (this == o)
+		if (this == o) {
 			return true;
-		if (o == null || getClass() != o.getClass())
+		}
+		if (o == null || getClass() != o.getClass()) {
 			return false;
+		}
 		IndexCoordinates that = (IndexCoordinates) o;
 		return Arrays.equals(indexNames, that.indexNames);
 	}

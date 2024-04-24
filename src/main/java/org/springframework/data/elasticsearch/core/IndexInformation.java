@@ -30,7 +30,7 @@ import org.springframework.lang.Nullable;
  * @author Peter-Josef Meisch
  * @since 4.2
  */
-public class IndexInformation {
+public final class IndexInformation {
 	private final String name;
 	@Nullable private final Settings settings;
 	@Nullable private final Document mapping;

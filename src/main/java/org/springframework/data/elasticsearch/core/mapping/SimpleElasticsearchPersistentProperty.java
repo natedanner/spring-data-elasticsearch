@@ -178,8 +178,7 @@ public class SimpleElasticsearchPersistentProperty extends
 				typeInformation = typeInformation.getComponentType();
 			}
 
-			Class<?> genericType = typeInformation.getTypeArguments().get(0).getType();
-			return genericType;
+			return typeInformation.getTypeArguments().get(0).getType();
 		};
 
 		switch (field.type()) {
@@ -244,6 +243,7 @@ public class SimpleElasticsearchPersistentProperty extends
 				break;
 			}
 			case Ip_Range: {
+				break;
 				// TODO currently unsupported, needs a library like https://seancfoley.github.io/IPAddress/
 			}
 			default:

@@ -83,7 +83,7 @@ public final class ClusterConnectionInfo {
 
 	public static class Builder {
 		private IntegrationtestEnvironment integrationtestEnvironment;
-		private boolean useSsl = false;
+		private boolean useSsl;
 		private String host;
 		private int httpPort;
 		@Nullable private ElasticsearchContainer elasticsearchContainer;

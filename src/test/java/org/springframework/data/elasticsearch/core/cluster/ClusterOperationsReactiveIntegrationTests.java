@@ -33,7 +33,7 @@ import org.springframework.data.elasticsearch.junit.jupiter.SpringIntegrationTes
  * @author Peter-Josef Meisch
  */
 @SpringIntegrationTest
-abstract public class ClusterOperationsReactiveIntegrationTests {
+public abstract class ClusterOperationsReactiveIntegrationTests {
 
 	@Autowired private ReactiveElasticsearchOperations operations;
 	private ReactiveClusterOperations clusterOperations;
@@ -51,9 +51,8 @@ abstract public class ClusterOperationsReactiveIntegrationTests {
 
 		clusterOperations.health() //
 				.as(StepVerifier::create) //
-				.consumeNextWith(clusterHealth -> { //
-					assertThat(allowedStates).contains(clusterHealth.getStatus()); //
-				}) //
+				.consumeNextWith(clusterHealth -> //
+					assertThat(allowedStates).contains(clusterHealth.getStatus())) //
 				.verifyComplete();
 	}
 }

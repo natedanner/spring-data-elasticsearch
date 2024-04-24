@@ -81,10 +81,8 @@ public class ReactiveElasticsearchQueryMethod extends ElasticsearchQueryMethod {
 			}
 		}
 
-		this.isCollectionQuery = Lazy.of(() -> {
-			return (!(isPageQuery() || isSliceQuery())
-					&& ReactiveWrappers.isMultiValueType(metadata.getReturnType(method).getType()) || super.isCollectionQuery());
-		});
+		this.isCollectionQuery = Lazy.of(() -> (!(isPageQuery() || isSliceQuery())
+					&& ReactiveWrappers.isMultiValueType(metadata.getReturnType(method).getType()) || super.isCollectionQuery()));
 	}
 
 	@Override

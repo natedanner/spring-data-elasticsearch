@@ -32,7 +32,7 @@ import org.springframework.util.Assert;
  * @author Sijia Liu
  * @since 4.4
  */
-public class ReindexRequest {
+public final class ReindexRequest {
 
 	// Request body
 	private final Source source;
@@ -149,7 +149,7 @@ public class ReindexRequest {
 		}
 	}
 
-	public static class Source {
+	public static final class Source {
 		private final IndexCoordinates indexes;
 		@Nullable private Query query;
 		@Nullable private Remote remote;
@@ -193,7 +193,7 @@ public class ReindexRequest {
 		}
 	}
 
-	public static class Slice {
+	public static final class Slice {
 		private final int id;
 		private final int max;
 
@@ -211,7 +211,7 @@ public class ReindexRequest {
 		}
 	}
 
-	public static class Dest {
+	public static final class Dest {
 
 		private final IndexCoordinates index;
 		@Nullable private String pipeline;
@@ -250,7 +250,7 @@ public class ReindexRequest {
 		}
 	}
 
-	public static class Script {
+	public static final class Script {
 		private final String source;
 		@Nullable private final String lang;
 

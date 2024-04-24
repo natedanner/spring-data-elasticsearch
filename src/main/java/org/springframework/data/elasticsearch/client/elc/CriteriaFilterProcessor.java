@@ -170,7 +170,7 @@ class CriteriaFilterProcessor {
 		Assert.isTrue(values[1] instanceof String || values[1] instanceof Distance,
 				"Second element of a geo distance filter must be a text or a Distance");
 
-		String dist = (values[1] instanceof Distance distance) ? extractDistanceString(distance) : (String) values[1];
+		String dist = values[1] instanceof Distance distance ? extractDistanceString(distance) : (String) values[1];
 
 		return QueryBuilders.geoDistance() //
 				.field(fieldName) //
@@ -327,9 +327,10 @@ class CriteriaFilterProcessor {
 
 		StringBuilder sb = new StringBuilder();
 		sb.append((int) distance.getValue());
-		switch ((Metrics) distance.getMetric()) {
-			case KILOMETERS -> sb.append("km");
-			case MILES -> sb.append("mi");
+		if ((Metrics) distance.getMetric() == Metrics.KILOMETERS) {
+			sb.append("km");
+		} else if ((Metrics) distance.getMetric() == Metrics.MILES) {
+			sb.append("mi");
 		}
 
 		return sb.toString();

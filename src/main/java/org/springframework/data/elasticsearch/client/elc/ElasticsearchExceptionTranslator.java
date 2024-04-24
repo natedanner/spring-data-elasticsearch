@@ -93,10 +93,7 @@ public class ElasticsearchExceptionTranslator implements PersistenceExceptionTra
 
 				return new ResourceNotFoundException(errorReason);
 			}
-
-			if (response.status() == 409) {
-
-			}
+			response.status();
 			String body = JsonUtils.toJson(response, jsonpMapper);
 
 			if (errorType != null && errorType.contains("validation_exception")) {
@@ -126,13 +123,14 @@ public class ElasticsearchExceptionTranslator implements PersistenceExceptionTra
 		}
 
 		if (status != null && message != null) {
-			if (status == 409 && message.contains("type\":\"version_conflict_engine_exception"))
+			if (status == 409 && message.contains("type\":\"version_conflict_engine_exception")) {
 				if (message.contains("version conflict, required seqNo")) {
 					throw new OptimisticLockingFailureException("Cannot index a document due to seq_no+primary_term conflict",
 							exception);
 				} else if (message.contains("version conflict, current version [")) {
 					throw new VersionConflictException("Version conflict", exception);
 				}
+			}
 		}
 	}
 }

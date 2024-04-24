@@ -218,7 +218,7 @@ public class ReactiveElasticsearchTemplate extends AbstractReactiveElasticsearch
 
         return Mono.from(execute( //
                         client -> client.reindex(reindexRequestES)))
-                .flatMap(response -> (response.task() == null)
+                .flatMap(response -> response.task() == null
                         ? Mono.error(
                         new UnsupportedBackendOperation("ElasticsearchClient did not return a task id on submit request"))
                         : Mono.just(response.task()));
@@ -425,7 +425,7 @@ public class ReactiveElasticsearchTemplate extends AbstractReactiveElasticsearch
         return StringUtils.hasText(pit) ? closePointInTime(pit) : Mono.empty();
     }
 
-    static private class PitSearchAfter {
+    private static class PitSearchAfter {
         private final BaseQuery baseQuery;
         @Nullable
         private final Sort sort;

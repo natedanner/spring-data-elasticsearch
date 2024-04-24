@@ -537,25 +537,33 @@ abstract class QueryByExampleElasticsearchExecutorIntegrationTests {
 
 		@Override
 		public boolean equals(Object o) {
-			if (this == o)
+			if (this == o) {
 				return true;
-			if (o == null || getClass() != o.getClass())
+			}
+			if (o == null || getClass() != o.getClass()) {
 				return false;
+			}
 
 			SampleEntity that = (SampleEntity) o;
 
-			if (!Objects.equals(rate, that.rate))
+			if (!Objects.equals(rate, that.rate)) {
 				return false;
-			if (available != that.available)
+			}
+			if (available != that.available) {
 				return false;
-			if (!Objects.equals(documentId, that.documentId))
+			}
+			if (!Objects.equals(documentId, that.documentId)) {
 				return false;
-			if (!Objects.equals(type, that.type))
+			}
+			if (!Objects.equals(type, that.type)) {
 				return false;
-			if (!Objects.equals(message, that.message))
+			}
+			if (!Objects.equals(message, that.message)) {
 				return false;
-			if (!Objects.equals(sampleNestedEntity, that.sampleNestedEntity))
+			}
+			if (!Objects.equals(sampleNestedEntity, that.sampleNestedEntity)) {
 				return false;
+			}
 			return Objects.equals(version, that.version);
 		}
 
@@ -599,10 +607,12 @@ abstract class QueryByExampleElasticsearchExecutorIntegrationTests {
 
 			@Override
 			public boolean equals(Object o) {
-				if (this == o)
+				if (this == o) {
 					return true;
-				if (o == null || getClass() != o.getClass())
+				}
+				if (o == null || getClass() != o.getClass()) {
 					return false;
+				}
 
 				SampleNestedEntity that = (SampleNestedEntity) o;
 

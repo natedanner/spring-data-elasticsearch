@@ -92,7 +92,7 @@ public abstract class CompletionWithContextsIntegrationTests {
 		operations.indexOps(ContextCompletionEntity.class).refresh();
 	}
 
-	abstract protected Query getSearchQuery(String suggestionName, String category);
+	protected abstract Query getSearchQuery(String suggestionName, String category);
 
 	@Test // DATAES-536
 	public void shouldFindSuggestionsForGivenCriteriaQueryUsingContextCompletionEntityOfMongo() {

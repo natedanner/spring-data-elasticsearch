@@ -128,13 +128,16 @@ public abstract class EntityCustomConversionIntegrationTests {
 
 		@Override
 		public boolean equals(Object o) {
-			if (this == o)
+			if (this == o) {
 				return true;
-			if (!(o instanceof Entity entity))
+			}
+			if (!(o instanceof Entity entity)) {
 				return false;
+			}
 
-			if (!Objects.equals(value, entity.value))
+			if (!Objects.equals(value, entity.value)) {
 				return false;
+			}
 			return Objects.equals(location, entity.location);
 		}
 

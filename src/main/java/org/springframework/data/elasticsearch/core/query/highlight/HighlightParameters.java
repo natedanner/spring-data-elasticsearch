@@ -19,7 +19,7 @@ package org.springframework.data.elasticsearch.core.query.highlight;
  * @author Peter-Josef Meisch
  * @since 4.3
  */
-public class HighlightParameters extends HighlightCommonParameters {
+public final class HighlightParameters extends HighlightCommonParameters {
 	private final String encoder;
 	private final String tagsSchema;
 

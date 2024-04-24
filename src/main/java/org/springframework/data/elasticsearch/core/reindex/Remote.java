@@ -26,7 +26,7 @@ import org.springframework.util.Assert;
  * @author Sijia Liu
  * @since 4.4
  */
-public class Remote {
+public final class Remote {
 	private final String scheme;
 	private final String host;
 	private final int port;

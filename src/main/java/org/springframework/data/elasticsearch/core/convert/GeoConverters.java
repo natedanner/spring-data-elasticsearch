@@ -344,7 +344,7 @@ public class GeoConverters {
 			String type = GeoConverters.getGeoJsonType(source);
 			Assert.isTrue(type.equalsIgnoreCase(GeoJsonPolygon.TYPE), "does not contain a type 'Polygon'");
 			List<GeoJsonLineString> lines = geoJsonLineStringsFromMap(source);
-			Assert.isTrue(lines.size() > 0, "no linestrings defined in polygon");
+			Assert.isTrue(!lines.isEmpty(), "no linestrings defined in polygon");
 			GeoJsonPolygon geoJsonPolygon = GeoJsonPolygon.of(lines.get(0));
 			for (int i = 1; i < lines.size(); i++) {
 				geoJsonPolygon = geoJsonPolygon.withInnerRing(lines.get(i));
@@ -491,9 +491,8 @@ public class GeoConverters {
 		Assert.isTrue(coordinates instanceof List, "coordinates must be a List");
 
 		// noinspection unchecked
-		List<GeoJsonLineString> lines = ((List<?>) coordinates).stream()
+		return ((List<?>) coordinates).stream()
 				.map(it -> GeoJsonLineString.of(coordinatesToPoints((List<List<Number>>) it))).collect(Collectors.toList());
-		return lines;
 	}
 
 	// endregion

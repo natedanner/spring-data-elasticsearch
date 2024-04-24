@@ -63,25 +63,30 @@ public class Explanation {
 
 	@Override
 	public boolean equals(Object o) {
-		if (this == o)
+		if (this == o) {
 			return true;
-		if (o == null || getClass() != o.getClass())
+		}
+		if (o == null || getClass() != o.getClass()) {
 			return false;
+		}
 
 		Explanation that = (Explanation) o;
 
-		if (match != that.match)
+		if (match != that.match) {
 			return false;
-		if (!value.equals(that.value))
+		}
+		if (!value.equals(that.value)) {
 			return false;
-		if (!Objects.equals(description, that.description))
+		}
+		if (!Objects.equals(description, that.description)) {
 			return false;
+		}
 		return details.equals(that.details);
 	}
 
 	@Override
 	public int hashCode() {
-		int result = (match ? 1 : 0);
+		int result = match ? 1 : 0;
 		result = 31 * result + value.hashCode();
 		result = 31 * result + (description != null ? description.hashCode() : 0);
 		result = 31 * result + details.hashCode();

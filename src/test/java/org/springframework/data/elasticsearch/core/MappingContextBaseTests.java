@@ -42,7 +42,7 @@ public abstract class MappingContextBaseTests {
 		return mappingContext;
 	}
 
-	final protected MappingBuilder getMappingBuilder() {
+	protected final MappingBuilder getMappingBuilder() {
 		return new MappingBuilder(elasticsearchConverter.get());
 	}
 }

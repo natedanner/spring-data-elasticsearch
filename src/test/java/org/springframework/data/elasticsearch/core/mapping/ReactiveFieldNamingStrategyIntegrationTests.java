@@ -74,7 +74,7 @@ public abstract class ReactiveFieldNamingStrategyIntegrationTests {
 				.verifyComplete();
 	}
 
-	abstract protected Query nativeMatchQuery(String fieldName, String value);
+	protected abstract Query nativeMatchQuery(String fieldName, String value);
 
 	@Document(indexName = "#{@indexNameProvider.indexName()}")
 	static class Entity {

@@ -96,16 +96,16 @@ public abstract class ReactiveSuggestIntegrationTests {
 	// region helper functions
 	private Mono<CompletionEntity> loadCompletionObjectEntities() {
 
-		CompletionEntity rizwan_idrees = new CompletionEntityBuilder("1").name("Rizwan Idrees").suggest("Rizwan Idrees")
+		CompletionEntity rizwanIdrees = new CompletionEntityBuilder("1").name("Rizwan Idrees").suggest("Rizwan Idrees")
 				.build();
-		CompletionEntity franck_marchand = new CompletionEntityBuilder("2").name("Franck Marchand")
+		CompletionEntity franckMarchand = new CompletionEntityBuilder("2").name("Franck Marchand")
 				.suggest("Franck", "Marchand").build();
-		CompletionEntity mohsin_husen = new CompletionEntityBuilder("3").name("Mohsin Husen").suggest("Mohsin", "Husen")
+		CompletionEntity mohsinHusen = new CompletionEntityBuilder("3").name("Mohsin Husen").suggest("Mohsin", "Husen")
 				.build();
-		CompletionEntity artur_konczak = new CompletionEntityBuilder("4").name("Artur Konczak").suggest("Artur", "Konczak")
+		CompletionEntity arturKonczak = new CompletionEntityBuilder("4").name("Artur Konczak").suggest("Artur", "Konczak")
 				.build();
 		List<CompletionEntity> entities = new ArrayList<>(
-				Arrays.asList(rizwan_idrees, franck_marchand, mohsin_husen, artur_konczak));
+				Arrays.asList(rizwanIdrees, franckMarchand, mohsinHusen, arturKonczak));
 		IndexCoordinates index = IndexCoordinates.of(indexNameProvider.indexName());
 		return operations.saveAll(entities, index).last();
 	}

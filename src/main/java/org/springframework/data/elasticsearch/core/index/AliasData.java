@@ -23,7 +23,7 @@ import org.springframework.lang.Nullable;
  *
  * @author Peter-Josef Meisch
  */
-public class AliasData {
+public final class AliasData {
 	private final String alias;
 	@Nullable private final Query filterQuery;
 	@Nullable private final String indexRouting;

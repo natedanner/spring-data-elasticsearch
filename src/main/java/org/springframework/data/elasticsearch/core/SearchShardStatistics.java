@@ -24,7 +24,7 @@ import org.springframework.lang.Nullable;
  * @author Haibo Liu
  * @since 5.3
  */
-public class SearchShardStatistics {
+public final class SearchShardStatistics {
 	private final Number failed;
 
 	private final Number successful;
@@ -74,7 +74,7 @@ public class SearchShardStatistics {
 		return failures;
 	}
 
-	public static class Failure {
+	public static final class Failure {
 		@Nullable private final String index;
 		@Nullable private final String node;
 		@Nullable private final String status;

@@ -72,11 +72,10 @@ final class DocumentAdapters {
 		Map<String, List<String>> highlightFields = hit.highlight();
 
 		Map<String, SearchDocumentResponse> innerHits = new LinkedHashMap<>();
-		hit.innerHits().forEach((name, innerHitsResult) -> {
+		hit.innerHits().forEach((name, innerHitsResult) ->
 			// noinspection ReturnOfNull
 			innerHits.put(name, SearchDocumentResponseBuilder.from(innerHitsResult.hits(), null, null, null, null, null,
-					searchDocument -> null, jsonpMapper));
-		});
+					searchDocument -> null, jsonpMapper)));
 
 		NestedMetaData nestedMetaData = from(hit.nested());
 

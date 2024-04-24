@@ -413,7 +413,7 @@ abstract class SimpleReactiveElasticsearchRepositoryIntegrationTests {
 				.as(StepVerifier::create) //
 				.expectNextMatches(searchHit -> {
 					List<String> hitHighlightField = searchHit.getHighlightField("message");
-					return hitHighlightField.size() == 1 && hitHighlightField.get(0).equals("<em>message</em>");
+					return hitHighlightField.size() == 1 && "<em>message</em>".equals(hitHighlightField.get(0));
 				}) //
 				.expectNextCount(2) //
 				.verifyComplete();
@@ -431,7 +431,7 @@ abstract class SimpleReactiveElasticsearchRepositoryIntegrationTests {
 				.as(StepVerifier::create) //
 				.expectNextMatches(searchHit -> {
 					List<String> hitHighlightField = searchHit.getHighlightField("message");
-					return hitHighlightField.size() == 1 && hitHighlightField.get(0).equals("<em>message</em>");
+					return hitHighlightField.size() == 1 && "<em>message</em>".equals(hitHighlightField.get(0));
 				}) //
 				.expectNextCount(2) //
 				.verifyComplete();
@@ -449,7 +449,7 @@ abstract class SimpleReactiveElasticsearchRepositoryIntegrationTests {
 				.as(StepVerifier::create) //
 				.expectNextMatches(searchHit -> {
 					List<String> hitHighlightField = searchHit.getHighlightField("message");
-					return hitHighlightField.size() == 1 && hitHighlightField.get(0).equals("<em>abc</em> xyz");
+					return hitHighlightField.size() == 1 && "<em>abc</em> xyz".equals(hitHighlightField.get(0));
 				}) //
 				.expectNextCount(2) //
 				.verifyComplete();
@@ -458,7 +458,7 @@ abstract class SimpleReactiveElasticsearchRepositoryIntegrationTests {
 				.as(StepVerifier::create) //
 				.expectNextMatches(searchHit -> {
 					List<String> hitHighlightField = searchHit.getHighlightField("message");
-					return hitHighlightField.size() == 1 && hitHighlightField.get(0).equals("abc <em>xyz</em>");
+					return hitHighlightField.size() == 1 && "abc <em>xyz</em>".equals(hitHighlightField.get(0));
 				}) //
 				.expectNextCount(2) //
 				.verifyComplete();
@@ -476,7 +476,7 @@ abstract class SimpleReactiveElasticsearchRepositoryIntegrationTests {
 				.as(StepVerifier::create) //
 				.expectNextMatches(searchHit -> {
 					List<String> hitHighlightField = searchHit.getHighlightField("message");
-					return hitHighlightField.size() == 1 && hitHighlightField.get(0).equals("<em>abc</em> xyz");
+					return hitHighlightField.size() == 1 && "<em>abc</em> xyz".equals(hitHighlightField.get(0));
 				}) //
 				.expectNextCount(2) //
 				.verifyComplete();
@@ -485,7 +485,7 @@ abstract class SimpleReactiveElasticsearchRepositoryIntegrationTests {
 				.as(StepVerifier::create) //
 				.expectNextMatches(searchHit -> {
 					List<String> hitHighlightField = searchHit.getHighlightField("message");
-					return hitHighlightField.size() == 1 && hitHighlightField.get(0).equals("abc <em>xyz</em>");
+					return hitHighlightField.size() == 1 && "abc <em>xyz</em>".equals(hitHighlightField.get(0));
 				}) //
 				.expectNextCount(2) //
 				.verifyComplete();
@@ -1019,9 +1019,8 @@ abstract class SimpleReactiveElasticsearchRepositoryIntegrationTests {
 
 		repository.saveAll(entityFlux).collectList() //
 				.as(StepVerifier::create) //
-				.consumeNextWith(savedEntities -> {
-					assertThat(savedEntities).isEqualTo(entityList);
-				}) //
+				.consumeNextWith(savedEntities ->
+					assertThat(savedEntities).isEqualTo(entityList)) //
 				.verifyComplete();
 	}
 

@@ -105,8 +105,8 @@ public abstract class SearchAfterIntegrationTests {
 
 		List<Entity> entities = IntStream.rangeClosed(1, 10)
 				.mapToObj(i -> {
-					var message = (i % 2 == 0) ? null : "message " + i;
-					var value = (i % 3 == 0) ? null : (long) i;
+					var message = i % 2 == 0 ? null : "message " + i;
+					var value = i % 3 == 0 ? null : (long) i;
 					return new Entity((long) i, message, value);
 				})
 				.collect(Collectors.toList());
@@ -193,17 +193,21 @@ public abstract class SearchAfterIntegrationTests {
 
 		@Override
 		public boolean equals(Object o) {
-			if (this == o)
+			if (this == o) {
 				return true;
-			if (o == null || getClass() != o.getClass())
+			}
+			if (o == null || getClass() != o.getClass()) {
 				return false;
+			}
 
 			Entity entity = (Entity) o;
 
-			if (!Objects.equals(id, entity.id))
+			if (!Objects.equals(id, entity.id)) {
 				return false;
-			if (!Objects.equals(keyword, entity.keyword))
+			}
+			if (!Objects.equals(keyword, entity.keyword)) {
 				return false;
+			}
 			return Objects.equals(value, entity.value);
 		}
 

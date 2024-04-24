@@ -23,10 +23,10 @@ package org.springframework.data.elasticsearch.utils.geohash;
  * Utilities for common Bit twiddling methods. Borrowed heavily from Lucene (org.apache.lucene.util.BitUtil).
  */
 public class BitUtil { // magic numbers for bit interleaving
-	private static final long MAGIC[] = { 0x5555555555555555L, 0x3333333333333333L, 0x0F0F0F0F0F0F0F0FL,
+	private static final long[] MAGIC = { 0x5555555555555555L, 0x3333333333333333L, 0x0F0F0F0F0F0F0F0FL,
 			0x00FF00FF00FF00FFL, 0x0000FFFF0000FFFFL, 0x00000000FFFFFFFFL, 0xAAAAAAAAAAAAAAAAL };
 	// shift values for bit interleaving
-	private static final short SHIFT[] = { 1, 2, 4, 8, 16 };
+	private static final short[] SHIFT = { 1, 2, 4, 8, 16 };
 
 	/**
 	 * Interleaves the first 32 bits of each long value Adapted from:
@@ -65,7 +65,7 @@ public class BitUtil { // magic numbers for bit interleaving
 	/**
 	 * flip flops odd with even bits
 	 */
-	public static final long flipFlop(final long b) {
+	public static long flipFlop(final long b) {
 		return ((b & MAGIC[6]) >>> 1) | ((b & MAGIC[0]) << 1);
 	}
 }

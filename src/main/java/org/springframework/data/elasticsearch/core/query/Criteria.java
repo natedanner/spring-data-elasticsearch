@@ -58,7 +58,7 @@ public class Criteria {
 
 	private @Nullable Field field;
 	private float boost = Float.NaN;
-	private boolean negating = false;
+	private boolean negating;
 
 	private final CriteriaChain criteriaChain = new CriteriaChain();
 	private final Set<CriteriaEntry> queryCriteriaEntries = new LinkedHashSet<>();
@@ -835,23 +835,30 @@ public class Criteria {
 
 	@Override
 	public boolean equals(Object o) {
-		if (this == o)
+		if (this == o) {
 			return true;
-		if (o == null || getClass() != o.getClass())
+		}
+		if (o == null || getClass() != o.getClass()) {
 			return false;
+		}
 
 		Criteria criteria = (Criteria) o;
 
-		if (Float.compare(criteria.boost, boost) != 0)
+		if (Float.compare(criteria.boost, boost) != 0) {
 			return false;
-		if (negating != criteria.negating)
+		}
+		if (negating != criteria.negating) {
 			return false;
-		if (!Objects.equals(field, criteria.field))
+		}
+		if (!Objects.equals(field, criteria.field)) {
 			return false;
-		if (!queryCriteriaEntries.equals(criteria.queryCriteriaEntries))
+		}
+		if (!queryCriteriaEntries.equals(criteria.queryCriteriaEntries)) {
 			return false;
-		if (!filterCriteriaEntries.equals(criteria.filterCriteriaEntries))
+		}
+		if (!filterCriteriaEntries.equals(criteria.filterCriteriaEntries)) {
 			return false;
+		}
 		return subCriteria.equals(criteria.subCriteria);
 	}
 
@@ -1042,15 +1049,18 @@ public class Criteria {
 
 		@Override
 		public boolean equals(Object o) {
-			if (this == o)
+			if (this == o) {
 				return true;
-			if (o == null || getClass() != o.getClass())
+			}
+			if (o == null || getClass() != o.getClass()) {
 				return false;
+			}
 
 			CriteriaEntry that = (CriteriaEntry) o;
 
-			if (key != that.key)
+			if (key != that.key) {
 				return false;
+			}
 			return Objects.equals(value, that.value);
 		}
 

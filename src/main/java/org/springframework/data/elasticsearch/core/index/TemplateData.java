@@ -25,7 +25,7 @@ import org.springframework.lang.Nullable;
  *
  * @author Peter-Josef Meisch
  */
-public class TemplateData {
+public final class TemplateData {
 	@Nullable private final String[] indexPatterns;
 	@Nullable Settings settings;
 	@Nullable Document mapping;
